@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+
+    <!--    <contextName></contextName>
+        &lt;!&ndash; 区分不同应用程序的记录，默认为default &ndash;&gt;
+        <property name="webroot" value=""/>-->
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- 输出到文件 -->
+    <appender name="front" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.home:-.}/logs/step.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.home:-.}/logs/oms-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level %logger{0}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="INFO"/>
+
+
+    <!--    <logger level="ALL" additivity="false" name="tt.dz.scheduletask">
+            <appender-ref ref="OMS_Batch"/>
+        </logger>
+
+        <logger level="ALL" additivity="false" name="org.springframework.scheduling.support">
+            <appender-ref ref="OMS_Batch"/>
+        </logger>
+
+
+        <logger level="ALL" additivity="false" name="tt.dz.dao.base">
+            <appender-ref ref="SQL"/>
+        </logger>-->
+
+
+    <root level="ALL">
+        <appender-ref ref="front"/>
+    </root>
+
+</configuration>

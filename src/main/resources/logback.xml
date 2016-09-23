@@ -29,6 +29,8 @@
 
     <logger name="org.springframework" level="INFO"/>
 
+    <logger name="org.apache.kafka" level="INFO"/>
+
 
     <!--    <logger level="ALL" additivity="false" name="tt.dz.scheduletask">
             <appender-ref ref="OMS_Batch"/>
